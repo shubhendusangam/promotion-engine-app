@@ -10,20 +10,26 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
+import static com.constant.Constants.SKU_DESC;
+import static com.constant.Constants.SKU_ID;
+import static com.constant.Constants.SKU_LIST;
+import static com.constant.Constants.SKU_PRICE;
+
 public class SkuInformation {
-   private String SKUID;
+   // skuid, skuDescription, skuprice
+   private String skuId;
    private String skuDescription;
    private String skuPrice;
 
-   public SkuInformation(String SKUID, String skuDescription, String skuPrice) {
+   public SkuInformation(String skuId, String skuDescription, String skuPrice) {
       super();
-      this.SKUID = SKUID;
+      this.skuId = skuId;
       this.skuDescription = skuDescription;
       this.skuPrice = skuPrice;
    }
 
-   public String getSKUID() {
-      return SKUID;
+   public String getSkuId() {
+      return skuId;
    }
 
    public String getSkuDescription() {
@@ -36,9 +42,7 @@ public class SkuInformation {
 
    @Override
    public String toString() {
-      return "Sku ID " + SKUID + "\n"+
-            "Sku Description " + skuDescription + "\n"+
-            "Sku price " + skuPrice;
+      return skuId + "      " + skuDescription + "        " + skuPrice + "\n";
    }
 
    public static List<SkuInformation> readSkuInfo(){
@@ -47,12 +51,12 @@ public class SkuInformation {
       try {
          Object obj = jsonParser.parse(new FileReader("src/main/resources/skulist.json"));
          JSONObject jsonObject = (JSONObject) obj;
-         JSONArray skuArray = (JSONArray) jsonObject.get("skulist");
+         JSONArray skuArray = (JSONArray) jsonObject.get(SKU_LIST);
          for (Object skuInfo : skuArray) {
             JSONObject sku = (JSONObject) skuInfo;
-            String skuId = (String) sku.get("SKUID");
-            String skuDescription = (String) sku.get("skuDescription");
-            String skuPrice = (String) sku.get("skuPrice");
+            String skuId = (String) sku.get(SKU_ID);
+            String skuDescription = (String) sku.get(SKU_DESC);
+            String skuPrice = (String) sku.get(SKU_PRICE);
             SkuInformation skuInformation = new SkuInformation(skuId, skuDescription, skuPrice);
             skuInformationList.add(skuInformation);
          }
