@@ -1,0 +1,24 @@
+{
+  "skulist" : [
+    {
+      "SKUID":"A",
+      "skuDescription":"white shirt by nike",
+      "skuPrice":"50"
+    },
+    {
+      "SKUID":"B",
+      "skuDescription":"blue pant by reymond",
+      "skuPrice":"30"
+    },
+    {
+      "SKUID":"C",
+      "skuDescription":"white vest by under armour",
+      "skuPrice":"20"
+    },
+    {
+      "SKUID":"D",
+      "skuDescription":"blue tie by pq",
+      "skuPrice":"15"
+    }
+  ]
+}
