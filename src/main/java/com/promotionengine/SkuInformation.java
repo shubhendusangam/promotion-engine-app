@@ -4,6 +4,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -20,6 +21,8 @@ public class SkuInformation {
    private String skuId;
    private String skuDescription;
    private String skuPrice;
+
+   public SkuInformation() {}
 
    public SkuInformation(String skuId, String skuDescription, String skuPrice) {
       super();
@@ -45,8 +48,7 @@ public class SkuInformation {
       return skuId + "      " + skuDescription + "        " + skuPrice + "\n";
    }
 
-   public static List<SkuInformation> readSkuInfo(){
-      List<SkuInformation> skuInformationList = new ArrayList<>();
+   public static Map<String, SkuInformation> readSkuInfo(Map<String, SkuInformation> skuInformationMap){
       JSONParser jsonParser = new JSONParser();
       try {
          Object obj = jsonParser.parse(new FileReader("src/main/resources/skulist.json"));
@@ -58,11 +60,11 @@ public class SkuInformation {
             String skuDescription = (String) sku.get(SKU_DESC);
             String skuPrice = (String) sku.get(SKU_PRICE);
             SkuInformation skuInformation = new SkuInformation(skuId, skuDescription, skuPrice);
-            skuInformationList.add(skuInformation);
+            skuInformationMap.put(skuId, skuInformation);
          }
       } catch (ParseException | IOException e) {
          e.getMessage();
       }
-      return skuInformationList;
+      return skuInformationMap;
    }
 }

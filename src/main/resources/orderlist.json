@@ -1,0 +1,20 @@
+{
+  "orderList" : [
+    {
+      "SKUID":"A",
+      "quantity":3
+    },
+    {
+      "SKUID":"B",
+      "quantity":2
+    },
+    {
+      "SKUID":"C",
+      "quantity":1
+    },
+    {
+      "SKUID":"D",
+      "quantity":1
+    }
+  ]
+}

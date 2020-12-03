@@ -9,4 +9,6 @@ public class Constants {
    public static final String QUANTITY = "quantity";
    public static final String FINAL_PRICE = "finalPrice";
    public static final String OFFER = "offer";
+
+   public static final String ORDER_LIST = "orderList";
 }
